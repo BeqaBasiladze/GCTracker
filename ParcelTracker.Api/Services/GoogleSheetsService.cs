@@ -15,13 +15,37 @@ namespace ParcelTracker.Api.Services
 
         public GoogleSheetsService()
         {
+            //var credentialsPath = Path.Combine(AppContext.BaseDirectory, "google-credentials.json");
+            //Console.WriteLine($"[DEBUG] Download key from: {credentialsPath}");
+
+            //if (!File.Exists(credentialsPath))
+            //{
+            //    Console.WriteLine("[ERROR] Файл google-credentials.json not found!");
+            //    throw new FileNotFoundException("google-credentials.json not found!", credentialsPath);
+            //}
+
+            //var credential = GoogleCredential
+            //    .FromFile(credentialsPath)
+            //    .CreateScoped(SheetsService.Scope.SpreadsheetsReadonly);
+
+            //_sheetsService = new SheetsService(new BaseClientService.Initializer
+            //{
+            //    HttpClientInitializer = credential,
+            //    ApplicationName = "ParcelTracker"
+            //});
             var credentialsPath = Path.Combine(AppContext.BaseDirectory, "google-credentials.json");
-            Console.WriteLine($"[DEBUG] Download key from: {credentialsPath}");
+            Console.WriteLine($"[DEBUG] Looking for credentials at: {credentialsPath}");
 
             if (!File.Exists(credentialsPath))
             {
-                Console.WriteLine("[ERROR] Файл google-credentials.json not found!");
-                throw new FileNotFoundException("google-credentials.json not found!", credentialsPath);
+                Console.WriteLine("[DEBUG] google-credentials.json not found, creating from env...");
+
+                var envJson = Environment.GetEnvironmentVariable("GOOGLE_CREDENTIALS_JSON");
+                if (string.IsNullOrWhiteSpace(envJson))
+                    throw new Exception("GOOGLE_CREDENTIALS_JSON env variable not set!");
+
+                File.WriteAllText(credentialsPath, envJson);
+                Console.WriteLine("[DEBUG] google-credentials.json created from environment.");
             }
 
             var credential = GoogleCredential
