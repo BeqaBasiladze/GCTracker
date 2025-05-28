@@ -69,7 +69,7 @@ namespace ParcelTracker.Api.Services
             foreach (var row in response.Values)
             {
                 var number = row[0]?.ToString()?.Trim();
-                if(number == trackingNumber.Trim())
+                if(string.Equals(number, trackingNumber?.Trim(), StringComparison.OrdinalIgnoreCase))
                 {
                     return new TrackingInfo
                     {
