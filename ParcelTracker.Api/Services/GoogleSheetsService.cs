@@ -49,7 +49,7 @@ namespace ParcelTracker.Api.Services
             }
 
             var credential = GoogleCredential
-                .FromFile("/app/parceltracker-key.json")
+                .FromFile("/etc/secrets/parceltracker-key.json")
                 .CreateScoped(SheetsService.Scope.SpreadsheetsReadonly);
 
             _sheetsService = new SheetsService(new BaseClientService.Initializer
