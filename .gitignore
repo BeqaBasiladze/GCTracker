@@ -1,1 +1,5 @@
 ParcelTracker.Api/google-credentials.json
+.vs/
+ParcelTracker.Api/bin/
+ParcelTracker.Api/obj/
+ParcelTracker.Api/google-credentials.json
