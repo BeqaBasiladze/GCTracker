@@ -14,6 +14,8 @@ WORKDIR /src
 COPY ParcelTracker.Api/*.csproj ParcelTracker.Api/
 RUN dotnet restore ParcelTracker.Api/ParcelTracker.Api.csproj
 
+COPY parceltracker-key.json /app/parceltracker-key.json
+
 COPY . .
 RUN dotnet publish ParcelTracker.Api/ParcelTracker.Api.csproj -c Release -o /app/publish
 

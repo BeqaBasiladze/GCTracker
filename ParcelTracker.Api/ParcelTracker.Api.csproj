@@ -12,6 +12,9 @@
     <PackageReference Include="Google.Apis.Sheets.v4" Version="1.69.0.3785" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     <Content Include="wwwroot\**" CopyToOutputDirectory="Always" />
+    <None Update="parceltracker-key.json">
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+  </None>
   </ItemGroup>
 
 </Project>
