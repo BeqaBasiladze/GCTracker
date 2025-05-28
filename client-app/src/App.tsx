@@ -22,7 +22,8 @@ function App() {
 
 		try {
 			const response = await axios.get<TrackingInfo>(
-				`http://localhost:5216/api/tracking/${trackingNumber.trim()}`
+				// `http://localhost:5216/api/tracking/${trackingNumber.trim()}`
+				`/api/tracking/${trackingNumber.trim()}`
 			);
 			setResult(response.data);
 		} catch {
