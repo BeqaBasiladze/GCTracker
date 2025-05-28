@@ -38,7 +38,7 @@ namespace ParcelTracker.Api.Services
         {
             Console.WriteLine($"[DEBUG] Tracking number searching : {trackingNumber}");
 
-            var range = $"{_sheetName}!A2:B";
+            var range = $"'{_sheetName}'!A2:B";
             var request = _sheetsService.Spreadsheets.Values.Get(_spreadsheetId, range);
             var response = request.Execute();
 
